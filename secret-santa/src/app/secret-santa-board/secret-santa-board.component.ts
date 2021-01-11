@@ -20,6 +20,7 @@ export class SecretSantaBoardComponent implements OnInit {
     'elisabet',
     'jacobo',
   ];
+  temp: SecretSantaItemObj[];
   secretSantaList: SecretSantaItemObj[];
   shuffled_list: string[];
   constructor() {
@@ -27,7 +28,7 @@ export class SecretSantaBoardComponent implements OnInit {
   }
   buildSecretSanta() {
     this.shuffled_list = this.shuffle(this.friendsList);
-    this.secretSantaList = [];
+    this.temp = [];
     for (let i = 0; i < this.shuffled_list.length; i++) {
       if (i < this.shuffled_list.length - 1) {
         var tupla: SecretSantaItemObj = {
@@ -41,9 +42,9 @@ export class SecretSantaBoardComponent implements OnInit {
         };
       }
 
-      this.secretSantaList.push(tupla);
+      this.temp.push(tupla);
     }
-    this.secretSantaList = this.shuffle(this.secretSantaList);
+    this.secretSantaList = this.shuffle(this.temp);
     /* this.secretSantaList = this.friendsList.map((item) => {
       let tupla: SecretSantaItemObj = {
         name_displayed: item,
